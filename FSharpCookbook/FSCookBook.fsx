@@ -27,3 +27,12 @@ let result1 = tryFindMatch (fun elem -> elem = 100) [ 200; 100; 50; 25 ]
 
 // result2 is None and its type is int option.
 let result2 = tryFindMatch (fun elem -> elem = 26) [ 200; 100; 50; 25 ]
+
+//Using recursive function
+let add a b = a + b
+add 1 2 
+let rec add_all l = 
+  match l with
+    | [] -> 0
+    | head :: tail -> head + add_all tail
+add_all [1; 2; 3; 4] // returns 10
