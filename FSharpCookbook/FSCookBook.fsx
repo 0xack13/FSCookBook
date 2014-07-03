@@ -1,5 +1,16 @@
 ﻿//F# cookbook
 
+let names = [ 1; 2; 3; 4; 5; 6; ]
+
+// Properties
+printfn "names.IsEmpty is %b" (names.IsEmpty)
+printfn "names.Length is %d" (names.Length)
+printfn "names.Head is %d" (names.Head)
+printfn "names.Tail is %A" (names.Tail)
+printfn "names.Tail.Head is %d" (names.Tail.Head)
+printfn "names.Tail.Tail.Head is %d" (names.Tail.Tail.Head)
+printfn "names.Item(1) is %d" (names.Item(1))
+
 //Using Seq
 let values = seq { 1 .. 10 }
 let doubled = Seq.map (fun v -> v * 2) values // [2; 4; 6; 8; 10; 12; 14; 16; 18; 20]
