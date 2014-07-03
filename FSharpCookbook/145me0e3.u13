@@ -11,22 +11,23 @@ printfn "names.Tail.Head is %A" (names.Tail.Head)
 printfn "names.Tail.Tail.Head is %d" (names.Tail.Tail.Head)
 printfn "names.Item(1) is %d" (names.Item(1))
 
-// Define a generic variable
+
 let genericA<'a> = 2 //"Hello World!" will work as well
 printfn "%A" genericA
 
 // Generic List: a & b are inferred to be the same type
-let makeList a b = [a; b]
+let makeList a b =
+    [a; b]
 makeList "Hello " "There!"
 
-// Type of the return type
-let genericAType (a: int) : int = a + 1
-printfn "%A" (genericAType 2)
+// Define Generic Type using '
+let genericAType : 'a // In C#: string genericAType<a>();   
+let genericAType t = "test"
 
 // Define Generic Function
-let genericFunc (x : 'a) (y : 'a) =
+let function3 (x : 'a) (y : 'a) =
     printf "%A %A" x y
-genericFunc("Hello ")("There!") // Result: "Hello " "There!"
+function3("Hello ")("There!") // Result: "Hello " "There!"
 
 // Type extension for Generic Array
 type 'a ``[]`` with
