@@ -74,3 +74,22 @@ let rec add_all l =
     | [] -> 0
     | head :: tail -> head + add_all tail
 add_all [1; 2; 3; 4] // returns 10
+
+
+// Descriminated Union
+type switchstate =
+    | On
+    | Off
+ 
+let toggle = function  (* pattern matching input *)
+    | On -> Off
+    | Off -> On
+ 
+let x = On
+let y = Off
+let z = toggle y
+ 
+printfn "x: %A" x
+printfn "y: %A" y
+printfn "z: %A" z
+printfn "toggle z: %A" (toggle z)
