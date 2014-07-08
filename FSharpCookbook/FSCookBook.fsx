@@ -1,5 +1,27 @@
 ﻿//F# cookbook
 
+// single line comments use a double slash
+(* multi line comments use (* . . . *) pair
+
+-end of multi line comment- *)
+
+// ------ Lists ------
+let twoToFive = [2;3;4;5]        // Square brackets create a list with
+                                 // semicolon delimiters.
+let oneToFive = 1 :: twoToFive   // :: creates list with new 1st element
+// The result is [1;2;3;4;5]
+let zeroToFive = [0;1] @ twoToFive   // @ concats two lists
+
+// to define a multiline function, just use indents. No semicolons needed.
+let evens list =
+   let isEven x = x%2 = 0     // Define "isEven" as a sub function
+   List.filter isEven list    // List.filter is a library function
+                              // with two parameters: a boolean function
+                              // and a list to work on
+
+evens oneToFive               // Now run the function
+
+
 // Using List properties
 //'%A' formats any value white '%d' formats any integer value
 let names = [ 1; 2; 3; 4; 5; 6; ]
