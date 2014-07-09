@@ -22,6 +22,15 @@ let evens list =
 evens oneToFive               // Now run the function
 
 
+// Match with example 
+let simplePatternMatch =
+   let x = "Jordan"
+   match x with
+    | "Jordan" -> printfn "x is Jordan"
+    | "alibaba" -> printfn "x is Alibaba"
+    | _ -> printfn "x is known yet!"   // underscore matches anything
+
+
 // Using List properties
 //'%A' formats any value white '%d' formats any integer value
 let names = [ 1; 2; 3; 4; 5; 6; ]
@@ -115,3 +124,32 @@ printfn "x: %A" x
 printfn "y: %A" y
 printfn "z: %A" z
 printfn "toggle z: %A" (toggle z)
+
+
+
+// sequences use curly braces
+let seq1 = seq { yield "a"; yield "b" }
+
+// sequences can use yield and 
+// can contain subsequences
+let strange = seq {
+    // "yield! adds one element
+    yield 1; yield 2;
+    
+    // "yield!" adds a whole subsequence
+    yield! [5..10]  
+    yield! seq {
+        for i in 1..10 do 
+          if i%2 = 0 then yield i }}
+// test                
+strange |> Seq.toList              
+
+
+// Sequences can be created using "unfold"
+// Here's the fibonacci series - unfold will be returning a sequence based on a computation
+let fib = Seq.unfold (fun (fst,snd) ->
+    Some(fst + snd, (snd, fst + snd))) (0,1)
+
+// take returns elements up to the specified count "10 in our case"
+let fib10 = fib |> Seq.take 10 |> Seq.toList
+printf "first 10 fibs are %A" fib10     
