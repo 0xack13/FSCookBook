@@ -59,6 +59,19 @@ let genericFunc (x : 'a) (y : 'a) =
     printf "%A %A" x y
 genericFunc("Hello ")("There!") // Result: "Hello " "There!"
 
+
+//Type Distinction using simple union types - Error: This expression was expected to have type OrderId but here has type CustomerId    
+type CustomerId = CustomerId of int   // define a union type 
+type OrderId = OrderId of int         // define another union type 
+
+let printOrderId (OrderId orderId) =  // deconstruct in the param
+   printfn "The orderId is %i" orderId
+
+//This won't work
+//let custId = CustomerId 1             // create a customer id
+//printOrderId custId                   // Good! A compiler error now.
+
+
 // Type extension for Generic Array
 type 'a ``[]`` with
   member x.GetOrDefault(n) = 
