@@ -166,3 +166,40 @@ let fib = Seq.unfold (fun (fst,snd) ->
 // take returns elements up to the specified count "10 in our case"
 let fib10 = fib |> Seq.take 10 |> Seq.toList
 printf "first 10 fibs are %A" fib10     
+
+// Using fold
+// product 10 = 10 * 9 * 7 *6 * 5 * 4 * 3 * 2 * 1
+let product n = 
+    let initialValue = 1
+    let action productSoFar x = productSoFar * x
+    [1..n] |> List.fold action initialValue
+
+//test
+product 10
+
+// sum of odd digits
+let sumOfOdds n = 
+    let initialValue = 0
+    let action sumSoFar x = if x%2=0 then sumSoFar else sumSoFar+x 
+    [1..n] |> List.fold action initialValue
+//test = 1 + 3 + 5 + 7 + 9
+sumOfOdds 10
+
+// 0 + 1 - 2 + 3 - 4 + 5 - 6 + 7 - 8 + 9
+let alternatingSum n = 
+    let initialValue = (true,0)
+    let action (isNeg,sumSoFar) x = if isNeg then (false,sumSoFar-x)
+                                             else (true ,sumSoFar+x)
+    [1..n] |> List.fold action initialValue |> snd
+
+//test
+alternatingSum 10
+
+// Sum of Squares
+let sumOfSquaresWithFold n = 
+    let initialValue = 0
+    let action sumSoFar x = sumSoFar + (x*x)
+    [1..n] |> List.fold action initialValue 
+
+//test
+sumOfSquaresWithFold 100
