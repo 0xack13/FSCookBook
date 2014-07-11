@@ -5,6 +5,14 @@
 
 -end of multi line comment- *)
 
+// Obtain individual values
+let c = fst (1, 2)
+let d = snd (1, 2)
+// No built-in function for third
+let third (_, _, c) = c
+let z = third(1, 2, 3)
+
+
 // ------ Lists ------
 let twoToFive = [2;3;4;5]        // Square brackets create a list with
                                  // semicolon delimiters.
