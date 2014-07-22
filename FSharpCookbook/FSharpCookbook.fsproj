@@ -55,6 +55,7 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <None Include="FSChartCookbook.fsx" />
+    <None Include="FSCookBook.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
