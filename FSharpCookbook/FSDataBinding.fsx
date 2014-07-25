@@ -39,3 +39,5 @@ let namesDougnut  = [ "Africa"; "Asia"; "Europe"; "South America";
 let chartDoughnut, seriesDoughnut = createChart SeriesChartType.Doughnut
 seriesDoughnut.Font <- new Font("Verdana", 11.0f)
 seriesDoughnut.Points.DataBindXY(namesDougnut, valuesDoughnut)
+
+

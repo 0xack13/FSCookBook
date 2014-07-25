@@ -1,6 +1,10 @@
-﻿//Visualize online data
+﻿#load "FSharpChart.fsx"
+#load "FSharpChart.fsx"
+
+//Visualize online data
 open System
 open System.Net
+
 // URL of a service that generates price data
 let url = "http://ichart.finance.yahoo.com/table.csv?s="
 
@@ -24,3 +28,9 @@ let getStockPrices stock count =
     |> Seq.take count |> Array.ofSeq |> Array.rev
 
 //getStockPrices "MSFT" 4;;
+
+//Using FSharpChart Library
+open Samples.Charting
+
+[for x in 0.0 .. 0.1 .. 6.0 -> x, sin x + cos (2.0 * x)]
+    |> FSharpChart.Line
