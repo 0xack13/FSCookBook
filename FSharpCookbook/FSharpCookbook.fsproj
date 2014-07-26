@@ -61,6 +61,7 @@
     <None Include="FSharpChart.fsx" />
     <None Include="packages.config" />
     <None Include="titanicAnalysis.fsx" />
+    <None Include="Titanic.csv" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
