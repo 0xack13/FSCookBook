@@ -26,3 +26,37 @@ let second = Series(dateRange (DateTime(2013,1,1)) 20, rand 20)
 
 //Construct a frame that comprises the two columns First & Second
 let df1 = Frame(["first"; "second"], [first; second])
+
+// The same as previously
+let df2 = Frame.ofColumns ["first" => first; "second" => second]
+
+// Transposed - here, rows are "first" and "second" & columns are dates
+let df3 = Frame.ofRows ["first" => first; "second" => second]
+
+// Create from individual observations (row * column * value)
+let df4 = 
+  [ ("Monday", "Tomas", 1.0); ("Tuesday", "Adam", 2.1)
+    ("Tuesday", "Tomas", 4.0); ("Wednesday", "Tomas", -5.4) ]
+  |> Frame.ofValues
+
+// Assuming we have a record 'Price' and a collection 'values'
+type Price = { Day : DateTime; Open : float }
+let prices = 
+  [ { Day = DateTime.Now; Open = 10.1 }
+    { Day = DateTime.Now.AddDays(1.0); Open = 15.1 }
+    { Day = DateTime.Now.AddDays(2.0); Open = 9.1 } ]
+
+// Creates a data frame with columns 'Day' and 'Open'
+let df5 = Frame.ofRecords prices
+
+//Number of odds or even numbers in a sequence
+let mySeq1 = seq { 1.. 100 }
+let printSeq seq1 = Seq.iter (printf "%A ") seq1; printfn "" 
+let seqResult = Seq.countBy (fun elem ->
+    if (elem % 2 = 0) then 0 else 1) mySeq1
+printSeq seqResult
+
+//using id
+let list = [1;2;3;4;5;6;1;2;3;1;1;2]
+let results = list |> Seq.countBy id |> Seq.toList 
+printfn "%A" results
