@@ -62,6 +62,7 @@
     <None Include="packages.config" />
     <None Include="titanicAnalysis.fsx" />
     <None Include="Titanic.csv" />
+    <None Include="usingDeedle.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">

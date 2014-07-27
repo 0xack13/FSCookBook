@@ -24,7 +24,7 @@ let byClass =
       // Get counts for 'True' and 'False' values of 'Survived'
       series (Seq.countBy id s.Values))
   // Create frame with 'Pclass' as row and 'Died' & 'Survived' columns
-  |> Frame.ofRows 
+  |> Frame.ofRows
   |> Frame.sortRowsByKey
   |> Frame.indexColsWith ["Died"; "Survived"]
 
