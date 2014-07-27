@@ -60,3 +60,7 @@ printSeq seqResult
 let list = [1;2;3;4;5;6;1;2;3;1;1;2]
 let results = list |> Seq.countBy id |> Seq.toList 
 printfn "%A" results
+
+//using frame
+let df = frame [ "S" => series [ 1 => (1, "One"); 2 => (2, "Two") ] ]  
+df |> Frame.expandCols ["S"]

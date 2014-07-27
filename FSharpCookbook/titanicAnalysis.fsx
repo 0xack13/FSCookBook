@@ -1,12 +1,11 @@
 ﻿//To be executed in the IS
-//#I "../packages/FSharp.Charting.0.90.7"
-//#I "../packages/Deedle.1.0.2"
-//#I "../packages/FSharp.Data.2.0.9"
-//#load "FSharp.Charting.fsx"
-//#load "Deedle.fsx"
-//#load "FSharp.Data.fsx"
+#I "../packages/FSharp.Charting.0.90.7"
+#I "../packages/Deedle.1.0.2"
+#I "../packages/FSharp.Data.2.0.9"
+#load "FSharp.Charting.fsx"
+#load "Deedle.fsx"
+#load "FSharp.Data.fsx"
 
-//#r @"D:\DevCode\0xack13\FSCookbook\packages\FSharp.Data.2.0.9\lib\net40\FSharp.Data.dll"
 
 open FSharp.Data
 open System
@@ -22,6 +21,8 @@ let byClass =
   titanic.GetColumn<bool>("survived")
   |> Series.applyLevel fst (fun s ->
       // Get counts for 'True' and 'False' values of 'Survived'
+      // (fun x -> x) = id
+      // series = 'Series.ofObservations'
       series (Seq.countBy id s.Values))
   // Create frame with 'Pclass' as row and 'Died' & 'Survived' columns
   |> Frame.ofRows
