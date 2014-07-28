@@ -23,10 +23,13 @@ let fb =
   |> Frame.sliceCols ["Open"; "Close"]
 fb?Difference <- fb?Open - fb?Close
 
+let plotMSFT = msft?Difference |> Series.observations
+let plotFB = fb?Difference |> Series.observations
+
 // Now we can easily plot the differences
 Chart.Combine
-  [ Chart.Line(msft?Difference |> Series.observations) 
-    Chart.Line(fb?Difference |> Series.observations) ]
+  [ Chart.Line(plotMSFT)
+    Chart.Line(plotFB) ]
 
 
 
