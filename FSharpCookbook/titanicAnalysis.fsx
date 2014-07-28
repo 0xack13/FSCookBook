@@ -6,14 +6,19 @@
 #load "Deedle.fsx"
 #load "FSharp.Data.fsx"
 
+// Reference the DLL to the related path
+//#r "\\packages\\FSharp.Data.2.0.9\\lib\\net40\\FSharp.Data.dll"
 
 open FSharp.Data
 open System
 open Deedle
 open FSharp.Charting
 
+//using F# identifier to get the current directory of the project/script
+let root = __SOURCE_DIRECTORY__ + "\\"
+
 // Read Titanic data & group rows by 'Sex'
-let root = "D:\\DevCode\\0xack13\\FSCookbook\\FSharpCookbook\\"
+//let root = "D:\\DevCode\\0xack13\\FSCookbook\\FSharpCookbook\\"
 let titanic = Frame.ReadCsv(root + "titanic.csv").GroupRowsBy<int>("pclass")
 
 // Get 'Survived' column and count survival count per clsas
