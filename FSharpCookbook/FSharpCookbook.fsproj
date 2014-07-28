@@ -63,6 +63,7 @@
     <None Include="titanicAnalysis.fsx" />
     <None Include="Titanic.csv" />
     <None Include="usingDeedle.fsx" />
+    <None Include="stockAnalysis.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
