@@ -60,3 +60,7 @@ jan234?MsftOpen |> Stats.mean
 
 // Get values corresponding to entire January 2013
 let jan = joinedIn.Rows.[DateTime(2013, 1, 1) .. DateTime(2013, 1, 31)] 
+
+// Calculate means over the period
+jan?FbOpen |> Stats.mean
+jan?MsftOpen |> Stats.mean
