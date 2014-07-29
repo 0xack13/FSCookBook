@@ -50,3 +50,13 @@ let joinedIn = msftRen.Join(fbRen, kind=JoinKind.Inner)
 Chart.Rows
   [ Chart.Line(joinedIn?MsftDiff |> Series.observations) 
     Chart.Line(joinedIn?FbDiff |> Series.observations) ]
+
+// Get values for the first three days of January 2013
+let janDates = [ for d in 2 .. 4 -> DateTime(2013, 1, d) ]
+let jan234 = joinedIn.Rows.[janDates]
+
+// Calculate mean of Open price for 3 days
+jan234?MsftOpen |> Stats.mean
+
+// Get values corresponding to entire January 2013
+let jan = joinedIn.Rows.[DateTime(2013, 1, 1) .. DateTime(2013, 1, 31)] 
