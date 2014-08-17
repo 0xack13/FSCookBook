@@ -21,5 +21,28 @@ let debtSeries =
 
 Chart.Line([ for row in csv.Rows -> row.Year, row.``Debt (percent GDP)`` ])
 
-let debt = Frame.ofColumns [ "Debt" => debtSeries  ]
-Chart.Line(debt.GetAllValues)
+[debtSeries |> Series.observations |> Chart.Line]
+
+
+//Listing US Presidents using Freebase Data
+let fb = FreebaseData.GetDataContext()
+let presidentInfos =
+    query { for p in fb.Society.Government.``US Presidents`` do
+        sortBy (Seq.max p.``President number``)
+        skip 23 }
+
+let presidentTerms =
+    [ for pres in presidentInfos do
+        for pos in pres.``Government Positions Held`` do
+        if string pos.``Basic title`` = "President" then
+            // Get start and end year of the position
+            let starty = DateTime.Parse(pos.From).Year
+            let endy = if pos.To = null then 2013 else
+                DateTime.Parse(pos.To).Year
+            // Return three element tuple with the info
+            yield (pres.Name, starty, endy) ]
+
+let presidents =
+    presidentTerms
+    |> Frame.ofRecords
+    |> Frame.indexColsWith ["President"; "Start"; "End"]
