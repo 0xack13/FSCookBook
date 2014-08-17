@@ -7,7 +7,6 @@
 #load "FSharp.Charting.fsx"
 #load "Deedle.fsx"
 
-
 open System
 open FSharp.Charting
 open FSharp.Data
@@ -16,6 +15,11 @@ open RProvider
 
 type UsDebt = CsvProvider<"C:\Data\us-debt.csv">
 let csv = UsDebt.Load("C:\Data\us-debt.csv")
+
 let debtSeries =
-    series [ for row in csv.Rows ->
-        row.Year, row.``Debt (percent GDP)`` ]
+    series [ for row in csv.Rows -> row.Year, row.``Debt (percent GDP)`` ]
+
+Chart.Line([ for row in csv.Rows -> row.Year, row.``Debt (percent GDP)`` ])
+
+let debt = Frame.ofColumns [ "Debt" => debtSeries  ]
+Chart.Line(debt.GetAllValues)
