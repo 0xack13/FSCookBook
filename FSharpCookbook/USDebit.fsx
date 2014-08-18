@@ -54,3 +54,5 @@ let presidents =
 let byEnd = presidents |> Frame.indexRowsInt "End"
 let endDebt = byEnd.Join(debt, JoinKind.Left)
 
+endDebt?Difference <-
+    endDebt?Debt |> Series.pairwiseWith (fun _ (prev, curr) -> curr - prev)
