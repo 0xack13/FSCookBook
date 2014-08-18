@@ -23,6 +23,9 @@ Chart.Line([ for row in csv.Rows -> row.Year, row.``Debt (percent GDP)`` ])
 
 [debtSeries |> Series.observations |> Chart.Line]
 
+let debt = Frame.ofColumns [ "Debt" => debtSeries ]
+
+
 
 //Listing US Presidents using Freebase Data
 let fb = FreebaseData.GetDataContext()
@@ -46,3 +49,8 @@ let presidents =
     presidentTerms
     |> Frame.ofRecords
     |> Frame.indexColsWith ["President"; "Start"; "End"]
+
+// Analyse debt change
+let byEnd = presidents |> Frame.indexRowsInt "End"
+let endDebt = byEnd.Join(debt, JoinKind.Left)
+
