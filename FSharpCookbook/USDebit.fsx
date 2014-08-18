@@ -56,3 +56,19 @@ let endDebt = byEnd.Join(debt, JoinKind.Left)
 
 endDebt?Difference <-
     endDebt?Debt |> Series.pairwiseWith (fun _ (prev, curr) -> curr - prev)
+
+// Plot Debt by president
+let byStart = presidents |> Frame.indexRowsInt "Start"
+let aligned = debt.Join(byStart, JoinKind.Left, Lookup.ExactOrSmaller)
+
+let infos = aligned.Rows |> Series.map (fun _ row ->
+    sprintf "%s (%d)" (row.GetAs "President") (row.GetAs "End"))
+
+let chunked = aligned?Debt |> Series.chunkWhile(fun y1 y2 ->
+    infos.[y1] = infos.[y2])
+
+chunked
+|> Series.observations
+|> Seq.map (fun (startYear, chunkDebts) ->
+    Chart.Area(chunkDebts |> Series.observations, Name=infos.[startYear]))
+|> Chart.Combine
