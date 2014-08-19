@@ -72,3 +72,4 @@ chunked
 |> Seq.map (fun (startYear, chunkDebts) ->
     Chart.Area(chunkDebts |> Series.observations, Name=infos.[startYear]))
 |> Chart.Combine
+
