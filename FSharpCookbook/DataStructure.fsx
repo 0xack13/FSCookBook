@@ -12,6 +12,13 @@ let rec SumTree t =
     match t with 
     | Node(x,left,right) -> x + (SumTree left) + (SumTree right) 
     | Leaf -> 0
+
+// SumTree : Tree<int> -> int 
+let rec SubTree t = 
+    match t with 
+    | Node(x,left,right) -> x - (SumTree left) - (SumTree right) 
+    | Leaf -> 0
+
 // InOrder : Tree<‘a> -> list<‘a>    
 let rec InOrder t = 
     match t with 
@@ -27,6 +34,7 @@ let rec Height t =
 printfn "%d" (SumTree tree7) // 28 
 printfn "%A" (InOrder tree7) // [1; 2; 3; 4; 5; 6; 7] 
 printfn "%d" (Height tree7)  // 3
+printfn "%d" (SubTree tree7)  // -20
 
 //Fold over trees
 // FoldTree : (‘a -> ‘r -> ‘r -> ‘r) -> ‘r -> Tree<‘a> -> ‘r 
