@@ -65,6 +65,7 @@
     <None Include="usingDeedle.fsx" />
     <None Include="stockAnalysis.fsx" />
     <None Include="USDebit.fsx" />
+    <None Include="DataStructure.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
