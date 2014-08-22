@@ -1,4 +1,18 @@
-﻿type Tree<'a> = 
+﻿type List<'a> = 
+ | Empty 
+ | Cons of 'a * List<'a>
+
+let ll7 = Cons(2, Cons(3,Empty))
+
+let rec SumList l = 
+    match l with 
+    | Cons(x,right) -> x + (SumList right) 
+    | Empty -> 0
+
+printfn "%d" (SumList ll7) // 5 
+
+
+type Tree<'a> = 
     | Node of (*data*)'a * (*left*)Tree<'a> * (*right*)Tree<'a> 
     | Leaf
 //     4 
@@ -57,3 +71,12 @@ let PostOrder t = (FoldTree (fun x l r acc -> l (r (x :: acc))) (fun acc -> acc)
 printfn "%A" (InOrder tree7)   // [1; 2; 3; 4; 5; 6; 7] 
 printfn "%A" (PreOrder tree7)  // [4; 2; 1; 3; 6; 5; 7] 
 printfn "%A" (PostOrder tree7) // [1; 3; 2; 5; 7; 6; 4]
+
+
+let strings = [ "one"; "two"; "three" ]
+let r = strings |> List.fold (fun r s -> r + s + " \n") ""
+printfn "%s" r
+
+let strings = [ "one"; "two"; "three" ]
+let r = strings |> List.reduce (+) 
+printfn "%s" r
