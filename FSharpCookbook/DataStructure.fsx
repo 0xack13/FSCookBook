@@ -1,4 +1,5 @@
-﻿type List<'a> = 
+﻿//Linked List
+type List<'a> = 
  | Empty 
  | Cons of 'a * List<'a>
 
@@ -9,8 +10,13 @@ let rec SumList l =
     | Cons(x,right) -> x + (SumList right) 
     | Empty -> 0
 
-printfn "%d" (SumList ll7) // 5 
+let rec SubList l =
+    match l with
+    | Cons(x,right) -> x - (SubList right)
+    | Empty -> 0 
 
+printfn "%d" (SumList ll7) // 5 
+printfn "%d" (SubList ll7) // -1 
 
 type Tree<'a> = 
     | Node of (*data*)'a * (*left*)Tree<'a> * (*right*)Tree<'a> 
