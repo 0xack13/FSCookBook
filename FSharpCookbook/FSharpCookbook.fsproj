@@ -54,6 +54,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <None Include="DataStructure/Stack.fsx" />
     <None Include="FSCookBook.fsx" />
     <None Include="FSDataBinding.fsx" />
     <None Include="FSChartCookbook.fsx" />
