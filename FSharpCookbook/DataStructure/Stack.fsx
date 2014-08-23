@@ -30,4 +30,18 @@ let rec update = function
     | xs, 0, y -> Cons(y, tail(xs))
     | xs, i, y -> Cons(head(xs), update(tail(xs), i-1, y)) 
 
-let xs = Cons(0, Cons(1, Cons(2, Nil)));;
+let rec SumStack l = 
+    match l with 
+    | Cons(x,right) -> x + (SumStack right) 
+    | Nil -> 0
+
+let rec SubStack l =
+    match l with
+    | Cons(x,right) -> x - (SubStack right)
+    | Nil -> 0 
+
+let ll7 = Cons(2, Cons(3,Nil))
+
+
+printfn "%d" (SumStack ll7) // 5 
+printfn "%d" (SubStack ll7) // -1 
