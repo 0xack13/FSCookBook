@@ -67,6 +67,7 @@
     <None Include="stockAnalysis.fsx" />
     <None Include="USDebit.fsx" />
     <None Include="DataStructure.fsx" />
+    <None Include="DataStructure\BinaryTree.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
