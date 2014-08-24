@@ -45,3 +45,16 @@ let ll7 = Cons(2, Cons(3,Nil))
 
 printfn "%d" (SumStack ll7) // 5 
 printfn "%d" (SubStack ll7) // -1 
+
+(*
+let xs = Cons(0, Cons(1, Cons(2, Nil)));;
+xs;;
+let ys = Cons(3, Cons(4, Cons(5, Nil)));;
+ys;;
+let zs = xs -||- ys;;
+zs;;
+head xs;;
+tail xs;;
+update(xs, 1, 99);;
+*)
+
