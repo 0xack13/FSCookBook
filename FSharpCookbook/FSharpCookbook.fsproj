@@ -54,7 +54,6 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="DataStructure/Stack.fsx" />
     <None Include="FSCookBook.fsx" />
     <None Include="FSDataBinding.fsx" />
     <None Include="FSChartCookbook.fsx" />
@@ -67,7 +66,9 @@
     <None Include="stockAnalysis.fsx" />
     <None Include="USDebit.fsx" />
     <None Include="DataStructure.fsx" />
+    <None Include="DataStructure/Stack.fsx" />
     <None Include="DataStructure\BinaryTree.fsx" />
+    <None Include="Algorithms\99beers.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
