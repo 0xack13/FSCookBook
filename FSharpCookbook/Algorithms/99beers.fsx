@@ -32,6 +32,9 @@ let inline bresenham fill (x0, y0) (x1, y1) =
         loop (e-dy) (x+1) y
   loop (dx/2) x0 y0
 
+
+#r @"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationFramework.dll"
+open System
 open System.Windows
 open System.Windows.Media.Imaging
 
