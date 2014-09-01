@@ -69,6 +69,9 @@
     <None Include="DataStructure/Stack.fsx" />
     <None Include="DataStructure\BinaryTree.fsx" />
     <None Include="Algorithms\99beers.fsx" />
+    <None Include="Algorithms\bresenham.fsx" />
+    <None Include="Algorithms\wordladder.fsx" />
+    <Content Include="Algorithms\short.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
