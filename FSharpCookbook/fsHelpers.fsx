@@ -25,7 +25,8 @@ let avg = data |> Seq.average
 
 let max = data |> Seq.max
 
-let variance values=
-  let average = Seq.average values
-  |> Seq.map (fun x -> (1.0 / float (Seq.length values)) * (x - average) ** 2.0)
-  |> Seq.sum
+let variance (values) = 
+    let average = Seq.average values
+    values
+    |> Seq.map (fun x -> (1.0 / float (Seq.length values)) * (x - average) ** 2.0)
+    |> Seq.sum

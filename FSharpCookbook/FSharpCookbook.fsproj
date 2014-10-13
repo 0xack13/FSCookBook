@@ -72,6 +72,7 @@
     <None Include="Algorithms\bresenham.fsx" />
     <None Include="Algorithms\wordladder.fsx" />
     <Content Include="Algorithms\short.txt" />
+    <None Include="fsHelpers.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
