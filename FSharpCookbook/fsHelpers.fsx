@@ -27,6 +27,8 @@ let max = data |> Seq.max
 
 let variance (values) = 
     let average = Seq.average values
+    printf "%f" average
     values
     |> Seq.map (fun x -> (1.0 / float (Seq.length values)) * (x - average) ** 2.0)
     |> Seq.sum
+// variance [1.0 .. 6.0];;
