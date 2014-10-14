@@ -73,6 +73,7 @@
     <None Include="Algorithms\wordladder.fsx" />
     <Content Include="Algorithms\short.txt" />
     <None Include="fsHelpers.fsx" />
+    <None Include="FSIntroSpection.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Deedle">
