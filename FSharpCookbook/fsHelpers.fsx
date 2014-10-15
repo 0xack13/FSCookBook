@@ -32,3 +32,26 @@ let variance (values) =
     |> Seq.map (fun x -> (1.0 / float (Seq.length values)) * (x - average) ** 2.0)
     |> Seq.sum
 // variance [1.0 .. 6.0];;
+
+
+//Using Map Module 
+let capitals =
+    [("Australia", "Canberra"); ("Canada", "Ottawa"); ("China", "Beijing");
+        ("Denmark", "Copenhagen"); ("Egypt", "Cairo"); ("Finland", "Helsinki");
+        ("France", "Paris"); ("Germany", "Berlin"); ("India", "New Delhi");
+        ("Japan", "Tokyo"); ("Mexico", "Mexico City"); ("Russia", "Moscow");
+        ("Slovenia", "Ljubljana"); ("Spain", "Madrid"); ("Sweden", "Stockholm");
+        ("Taiwan", "Taipei"); ("USA", "Washington D.C.")]
+    |> Map.ofList
+ 
+let rec main() =
+    Console.Write("Find a capital by country (type 'q' to quit): ")
+    match Console.ReadLine() with
+    | "q" -> Console.WriteLine("Bye bye")
+    | country ->
+        match capitals.TryFind(country) with
+        | Some(capital) -> Console.WriteLine("The capital of {0} is {1}\n", country, capital)
+        | None -> Console.WriteLine("Country not found.\n")
+        main() (* loop again *)
+ 
+main()
