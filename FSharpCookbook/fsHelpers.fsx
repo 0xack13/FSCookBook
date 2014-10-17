@@ -54,4 +54,16 @@ let rec main() =
         | None -> Console.WriteLine("Country not found.\n")
         main() (* loop again *)
  
-main()
+//main()
+
+//Map of List
+
+ let monkeys =
+    [ "Squirrel Monkey", "Simia sciureus";
+        "Marmoset", "Callithrix jacchus";
+        "Macaque", "Macaca mulatta";
+        "Gibbon", "Hylobates lar";
+        "Gorilla", "Gorilla gorilla";
+        "Humans", "Homo sapiens";
+        "Chimpanzee", "Pan troglodytes" ]
+    |> Map.ofList;; (* Convert list to Map *)
