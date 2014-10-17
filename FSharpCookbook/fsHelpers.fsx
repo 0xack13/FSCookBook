@@ -67,3 +67,14 @@ let rec main() =
         "Humans", "Homo sapiens";
         "Chimpanzee", "Pan troglodytes" ]
     |> Map.ofList;; (* Convert list to Map *)
+
+monkeys.["Marmoset"];;
+
+let holidays =
+    Map.empty. (* Start with empty Map *)
+        Add("Christmas", "Dec. 25").
+        Add("Halloween", "Oct. 31").
+        Add("Darwin Day", "Feb. 12").
+        Add("World Vegan Day", "Nov. 1");;
+holidays.["Christmas"];;
+//val holidays : Map<string,string>
