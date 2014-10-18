@@ -78,3 +78,7 @@ let holidays =
         Add("World Vegan Day", "Nov. 1");;
 holidays.["Christmas"];;
 //val holidays : Map<string,string>
+
+let simpleArray = [|1;3;4;5;6;|];
+
+let simpleForArray = 
