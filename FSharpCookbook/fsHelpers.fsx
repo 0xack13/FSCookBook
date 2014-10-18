@@ -81,4 +81,12 @@ holidays.["Christmas"];;
 
 let simpleArray = [|1;3;4;5;6;|];
 
-let simpleForArray = 
+type record1 = {
+  value1:string;
+  value2:string
+}
+
+let myArray  = Array.init 100 (fun x -> {value1 = "x"; value2 = "y"})
+
+//using Generics
+//let myArray  = Array.init<record1> 100 (fun x -> {value1 = "x"; value2 = "y"})
