@@ -90,6 +90,45 @@ let myArray  = Array.init 100 (fun x -> {value1 = "x"; value2 = "y"})
 
 //using Generics
 //let myArray  = Array.init<record1> 100 (fun x -> {value1 = "x"; value2 = "y"})
+//Moving Average
+let sma period f (list:float list) =
+    let sma_aux queue v =
+        let q = Seq.truncate period (v :: queue)
+        Seq.average q, Seq.toList q
+    List.fold (fun s v ->
+        let avg,state = sma_aux s v
+        f avg
+        state) [] list
+ 
+printf "sma3: "
+[ 1.;2.;3.;4.;5.;5.;4.;3.;2.;1.] |> sma 3 (printf "%.2f ")
+printf "\nsma5: "
+[ 1.;2.;3.;4.;5.;5.;4.;3.;2.;1.] |> sma 5 (printf "%.2f ")
+printfn ""
+
+
+
+//Using Take and use full sequence printing
+let list = [ 1 .. 10 ]
+let res = list |> Seq.take 5
+printf "Res Sequence: %A" (res |> Seq.toList)
+
+let mySeq = seq { for i in 1 .. 10 -> i*i }
+let truncatedSeq = Seq.truncate 5 mySeq
+let takenSeq = Seq.take 5 mySeq
+
+let truncatedSeq2 = Seq.truncate 20 mySeq
+let takenSeq2 = Seq.take 20 mySeq
+
+let printSeq seq1 = Seq.iter (printf "%A ") seq1; printfn "" 
+
+// Up to this point, the sequences are not evaluated. 
+// The following code causes the sequences to be evaluated.
+truncatedSeq |> printSeq
+truncatedSeq2 |> printSeq
+takenSeq |> printSeq
+// The following line produces a run-time error (in printSeq):
+takenSeq2 |> printSeq
 
 //Using Take and use full sequence printing
 let list = [ 1 .. 10 ]
