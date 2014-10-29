@@ -120,7 +120,7 @@ let takenSeq = Seq.take 5 mySeq
 let truncatedSeq2 = Seq.truncate 20 mySeq
 let takenSeq2 = Seq.take 20 mySeq
 
-let printSeq seq1 = Seq.iter (printf "%A ") seq1; printfn "" 
+let printSeq seq1 = Seq.iter (printf "Sequence is: %A ") seq1; printfn "" 
 
 // Up to this point, the sequences are not evaluated. 
 // The following code causes the sequences to be evaluated.
