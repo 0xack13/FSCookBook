@@ -191,3 +191,29 @@ for result in results do
 printfn "Press any key to exit."
  
 System.Console.ReadKey() |> ignore
+
+/// Map/Reduce Count Words
+/// maps an input into a tuple of input and count
+let mapper x =
+    (x, 1)
+
+/// reduces a list of input and count tuples, summing the counts
+let reducer (a:(string * int) list) (x:string * int) =
+    if List.length a > 0 && fst (List.head a) = fst x then
+        (fst (List.head a), snd (List.head a) + snd x)::List.tail a
+    else
+        x::a            
+
+/// maps the mapper function over a list of input
+let map xs =
+    List.map (mapper) xs
+
+/// maps the reducer function over a list of input and count tuples
+let reduce (xs:(string * int) list) = 
+    List.fold (reducer) [] xs
+
+/// maps the input, sorts the intermediate data, and reduces the results
+let mapReduce xs = 
+    map xs
+    |> List.sort
+    |> reduce
