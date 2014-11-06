@@ -229,3 +229,15 @@ let TestNumber input =
 TestNumber 7
 TestNumber 11
 TestNumber 32
+
+open System.Text.RegularExpressions
+
+let testString = "http://www.bob.com http://www.b.com http://www.bob.com http://www.bill.com"
+
+let matches input =
+    Regex.Matches(input, "(http:\/\/\S+)") 
+    |> Seq.cast<Match>
+    |> Seq.groupBy (fun m -> m.Value)
+    |> Seq.map (fun (value, groups) -> value, (groups |> Seq.length))
+
+//matches testString;;
