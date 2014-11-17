@@ -287,3 +287,16 @@ let rec fact = function
     | n -> n * fact (n - 1) *)
  
 Console.WriteLine(fact 6)
+
+
+// create an immutable list
+let list1 = [1;2;3;4]   
+
+// prepend to make a new list
+let list2 = 0::list1    
+
+// get the last 4 of the second list 
+let list3 = list2.Tail
+
+// the two lists are the identical object in memory!
+System.Object.ReferenceEquals(list1,list3)
