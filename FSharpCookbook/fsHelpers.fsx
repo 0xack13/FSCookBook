@@ -300,3 +300,9 @@ let list3 = list2.Tail
 
 // the two lists are the identical object in memory!
 System.Object.ReferenceEquals(list1,list3)
+
+
+
+let nums = [1; 2; 3; 4; 5] 
+let odds = nums |> List.filter (fun x -> x%2 = 1) 
+printfn "odds = %A" odds // odds = [1; 3; 5]
