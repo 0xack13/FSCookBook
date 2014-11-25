@@ -312,3 +312,27 @@ let a = 1 in
   (printfn "%i" a;
    (let a = a + 1 in printfn "%i" a);
    printfn "%i" a)
+
+// Sequence using Range Expressions
+let one= seq { 0 .. 100 }
+printfn "%A" one
+ 
+//Sequence using Range Expressions of characters
+let two= seq {'a'..'z'}
+printfn "%A" two 
+ 
+//Sequence with increment
+let three= seq {1..2..10}
+printfn "%A" three
+ 
+//sequence with yield keyword
+let four= seq { for i in 1 .. 5 do yield i * i }
+printfn "%A" four
+ 
+//sequence with -> operator 
+let five= seq { for i in 1 .. 5 -> i * i }
+printfn "%A" five
+ 
+//Sequence with decrement
+let six= seq {10..-1..1}
+printfn "%A" six
