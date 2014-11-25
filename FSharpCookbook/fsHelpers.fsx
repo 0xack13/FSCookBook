@@ -306,3 +306,9 @@ System.Object.ReferenceEquals(list1,list3)
 let nums = [1; 2; 3; 4; 5] 
 let odds = nums |> List.filter (fun x -> x%2 = 1) 
 printfn "odds = %A" odds // odds = [1; 3; 5]
+
+// Lexical scoping
+let a = 1 in  
+  (printfn "%i" a;
+   (let a = a + 1 in printfn "%i" a);
+   printfn "%i" a)
