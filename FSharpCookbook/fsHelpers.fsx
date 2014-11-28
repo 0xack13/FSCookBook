@@ -336,3 +336,66 @@ printfn "%A" five
 //Sequence with decrement
 let six= seq {10..-1..1}
 printfn "%A" six
+
+
+let extractLinks url =
+    async {
+        let webClient = new System.Net.WebClient() 
+ 
+        printfn "Downloading %s" url
+        let html = webClient.DownloadString(url : string)
+        printfn "Got %i bytes" html.Length
+ 
+        let matches = System.Text.RegularExpressions.Regex.Matches(html, @"http://\S+")
+        printfn "Got %i links" matches.Count
+ 
+        return url, matches.Count
+    };;
+ 
+val extractLinks : string -> Async<string * int>
+
+Async.RunSynchronously (extractLinks "http://www.yahoo.com/");;
+
+
+
+open System.Text.RegularExpressions
+open System.Net
+ 
+let download url =
+    let webclient = new System.Net.WebClient()
+    webclient.DownloadString(url : string)
+ 
+let extractLinks html = Regex.Matches(html, @"http://\S+")
+ 
+let downloadAndExtractLinks url =
+    let links = (url |> download |> extractLinks)
+    url, links.Count
+ 
+let urls =
+     [@"http://www.craigslist.com/";
+     @"http://www.msn.com/";
+     @"http://en.wikibooks.org/wiki/Main_Page";
+     @"http://www.wordpress.com/";
+     @"http://news.google.com/";]
+ 
+let pmap f l =
+    seq { for a in l -> async { return f a } }
+    |> Async.Parallel
+    |> Async.Run
+ 
+let testSynchronous() = List.map downloadAndExtractLinks urls
+let testAsynchronous() = pmap downloadAndExtractLinks urls
+ 
+let time msg f =
+    let stopwatch = System.Diagnostics.Stopwatch.StartNew()
+    let temp = f()
+    stopwatch.Stop()
+    printfn "(%f ms) %s: %A" stopwatch.Elapsed.TotalMilliseconds msg temp
+ 
+let main() =
+    printfn "Start..."
+    time "Synchronous" testSynchronous
+    time "Asynchronous" testAsynchronous
+    printfn "Done."
+ 
+main()
