@@ -359,7 +359,8 @@ Async.RunSynchronously (extractLinks "http://www.yahoo.com/");;
 
 //Using yield keyword
 let tens = seq { 0 .. 10 .. 100}
-
+let integers = seq { for i =0 to System.Int32.MaxValue do yield i }
+let oneToTen = seq { for i in 0 .. 100 -> 10}
 
 
 
