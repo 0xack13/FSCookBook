@@ -357,6 +357,11 @@ val extractLinks : string -> Async<string * int>
 Async.RunSynchronously (extractLinks "http://www.yahoo.com/");;
 
 
+//Using yield keyword
+let tens = seq { 0 .. 10 .. 100}
+
+
+
 
 open System.Text.RegularExpressions
 open System.Net
