@@ -362,6 +362,9 @@ let tens = seq { 0 .. 10 .. 100}
 let integers = seq { for i =0 to System.Int32.MaxValue do yield i }
 let oneToTen = seq { for i in 0 .. 100 -> 10}
 
+//Print full sequence values
+printfn "%A" oneToTen;;
+printfn "%A" (Seq.toList oneToTen)
 
 
 open System.Text.RegularExpressions
