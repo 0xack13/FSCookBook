@@ -365,6 +365,8 @@ let oneToTen = seq { for i in 0 .. 100 -> 10}
 //Print full sequence values
 printfn "%A" oneToTen;;
 printfn "%A" (Seq.toList oneToTen)
+//OOM
+printfn "%A" (Seq.toList integers)
 
 
 open System.Text.RegularExpressions
