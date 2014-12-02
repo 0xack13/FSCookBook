@@ -368,6 +368,10 @@ printfn "%A" (Seq.toList oneToTen)
 //OOM
 printfn "%A" (Seq.toList integers)
 
+//With yield!
+let withYieldBang = 
+    seq { for i in 0 .. 10 .. 100 do 
+    yield! seq { i .. 1 .. i+9 } }
 
 open System.Text.RegularExpressions
 open System.Net
