@@ -368,15 +368,41 @@ printfn "%A" (Seq.toList oneToTen)
 //OOM
 printfn "%A" (Seq.toList integers)
 
-//With yield!
+//With yield! - it yields the "SUBsequence"
+//withYieldBang |> Seq.take 20 |> Seq.toList;;
 let withYieldBang = 
     seq { for i in 0 .. 10 .. 100 do 
         yield! seq { i .. 1 .. i+9 } }
 
-//With Yield
+//With Yield - It yields the "Sequence"
+//withYieldBang |> Seq.take 20;;
 let withYield =
     seq { for i in 0 .. 10 .. 100 do
         yield seq { i .. 1 .. i+9 } }
+
+
+type TraceBuilder() =
+    // other members as before
+
+    member this.Yield(x) = 
+        printfn "Yield an unwrapped %A as an option" x
+        Some x
+
+type TraceBuilder() =
+    // other members as before
+
+    member this.Yield(x) = 
+        printfn "Yield an unwrapped %A as an option" x
+        Some x
+
+// make a new instance        
+let trace = new TraceBuilder()
+
+// test
+trace { 
+    yield 1
+    } |> printfn "Result for yield: %A" 
+
 
 open System.Text.RegularExpressions
 open System.Net
