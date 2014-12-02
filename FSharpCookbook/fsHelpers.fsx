@@ -371,7 +371,12 @@ printfn "%A" (Seq.toList integers)
 //With yield!
 let withYieldBang = 
     seq { for i in 0 .. 10 .. 100 do 
-    yield! seq { i .. 1 .. i+9 } }
+        yield! seq { i .. 1 .. i+9 } }
+
+//With Yield
+let withYield =
+    seq { for i in 0 .. 10 .. 100 do
+        yield seq { i .. 1 .. i+9 } }
 
 open System.Text.RegularExpressions
 open System.Net
